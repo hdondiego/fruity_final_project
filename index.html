@@ -6,63 +6,116 @@
     </head>
     <body>
         <img src="fruity_delight_logo.png" alt="Fruity Delight Logo" class="logo">
-        <div class="row">
-            <div class="column">
-                <div class="card">  <!-- add id for produce to sort by name and price-->
-                    <img src="./products/blueberries.jpg" alt="Blueberries" class="product">
-                    <h5>Blueberries</h5>
-                    <h6>$3.99</h6>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <button class="button" onclick="sortAlphAZ()">Name &uarr;</button>
+        <button class="button" onclick="sortAlphZA()">Name &darr;</button>
+        <button class="button" onclick="sortPriceLowHigh()">Price &uarr;</button>
+        <button class="button" onclick="sortPriceHighLow()">Price &darr;</button>
+
+        <div id="container">
+            <div class="row">
+                <div class="column"
+                    data-price="3.99"
+                    data-name="blueberries">
+                    <div class="card">  
+                        <img src="./products/blueberries.jpg" alt="Blueberries" class="product">
+                        <h5>Blueberries<br><br>
+                            $3.99</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <img src="./products/pineapple.jpg" alt="Pineapple" class="product">
-                    <h5>Pineapple</h5>
-                    <h6>$2.99</h6>
+
+                <div class="column"
+                    data-price="2.99"
+                    data-name="pineapple">
+                    <div class="card">
+                        <img src="./products/pineapple.jpg" alt="Pineapple" class="product">
+                        <h5>Pineapple<br><br>
+                            $2.99</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <img src="./products/bananas.jpg" alt="Bananas" class="product">
-                    <h5>Bananas</h5>
-                    <h6>$0.69</h6>
+
+                <div class="column"
+                    data-price="0.69"
+                    data-name="bananas">
+                    <div class="card">
+                        <img src="./products/bananas.jpg" alt="Bananas" class="product">
+                        <h5>Bananas<br><br>
+                            $0.69</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <img src="./products/red_apple.jpg" alt="Red Apple" class="product">
-                    <h5>Red Apple</h5>
-                    <h6>$1.00</h6>
+
+                <div class="column"
+                    data-price="1.00"
+                    data-name="red apple">
+                    <div class="card">
+                        <img src="./products/red_apple.jpg" alt="Red Apple" class="product">
+                        <h5>Red Apple<br><br>
+                            $1.00</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <img src="./products/peach.jpg" alt="Peach" class="product">
-                    <h5>Peach</h5>
-                    <h6>$0.75</h6>
+
+                <div class="column"
+                    data-price="0.75"
+                    data-name="peach">
+                    <div class="card">
+                        <img src="./products/peach.jpg" alt="Peach" class="product">
+                        <h5>Peach<br><br>
+                            $0.75</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <img src="./products/raspberries.jpg" alt="Raspberries" class="product">
-                    <h5>Raspberries</h5>
-                    <h6>$2.99</h6>
+
+                <div class="column"
+                    data-price="2.99"
+                    data-name="raspberries">
+                    <div class="card">
+                        <img src="./products/raspberries.jpg" alt="Raspberries" class="product">
+                        <h5>Raspberries<br><br>
+                            $2.99</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <img src="./products/mangos.jpg" alt="Mangos" class="product">
-                    <h5>Mangos</h5>
-                    <h6>$1.99</h6>
+
+                <div class="column"
+                    data-price="1.99"
+                    data-name="mangos">
+                    <div class="card">
+                        <img src="./products/mangos.jpg" alt="Mangos" class="product">
+                        <h5>Mangos<br><br>
+                            $1.99</h5>
+                        
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <img src="./products/oranges.jpg" alt="Oranges" class="product">
-                    <h5>Oranges</h5>
-                    <h6>$2.99</h6>
+                
+                <div class="column"
+                    data-price="2.99"
+                    data-name="oranges">
+                    <div class="card">
+                        <img src="./products/oranges.jpg" alt="Oranges" class="product">
+                        <h5>Oranges<br><br>
+                            $2.99</h5>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
+
+    <!--Code for sorting buttons-->
+    <script>
+        var divList = $(".column");
+
+        function sortAlphAZ(){
+            divList.sort(function(a, b){ return $(a).data("name").localeCompare($(b).data("name"))});    
+            $("#container").html(divList);}
+
+        function sortAlphZA(){
+            divList.sort(function(a, b){ return $(b).data("name").localeCompare($(a).data("name"))});    
+            $("#container").html(divList);}
+
+        function sortPriceHighLow(){
+            divList.sort(function(a, b){ return $(b).data("price")-$(a).data("price")});    
+            $("#container").html(divList);}
+
+        function sortPriceLowHigh(){
+            divList.sort(function(a, b){ return $(a).data("price")-$(b).data("price")});    
+            $("#container").html(divList);}
+    </script>
 </html>
