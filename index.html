@@ -49,7 +49,7 @@
                         <img src="./products/blueberries.jpg" alt="Blueberries" class="product">
                         <h5>Blueberries<br><br>
                             $3.99</h5>
-                        <button id="Blueberries" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Blueberries" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                         <img src="./products/pineapple.jpg" alt="Pineapple" class="product">
                         <h5>Pineapple<br><br>
                             $2.99</h5>
-                        <button id="Pineapple" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Pineapple" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
                         <img src="./products/bananas.jpg" alt="Bananas" class="product">
                         <h5>Bananas<br><br>
                             $0.69</h5>
-                        <button id="Bananas" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Bananas" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -82,7 +82,7 @@
                         <img src="./products/red_apple.jpg" alt="Red Apple" class="product">
                         <h5>Red Apple<br><br>
                             $1.00</h5>
-                        <button id="RedApple" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="RedApple" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
                         <img src="./products/peach.jpg" alt="Peach" class="product">
                         <h5>Peach<br><br>
                             $0.75</h5>
-                        <button id="Peach" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Peach" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -104,7 +104,7 @@
                         <img src="./products/raspberries.jpg" alt="Raspberries" class="product">
                         <h5>Raspberries<br><br>
                             $2.99</h5>
-                        <button id="Raspberries" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Raspberries" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@
                         <img src="./products/mangos.jpg" alt="Mangos" class="product">
                         <h5>Mangos<br><br>
                             $1.99</h5>
-                        <button id="Mangos" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Mangos" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
                 
@@ -126,7 +126,7 @@
                         <img src="./products/oranges.jpg" alt="Oranges" class="product">
                         <h5>Oranges<br><br>
                             $2.99</h5>
-                        <button id="Oranges" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Oranges" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -137,7 +137,7 @@
                         <img src="./products/durian.jpg" alt="Durian" class="product">
                         <h5>Durian<br><br>
                             $7.99</h5>
-                        <button id="Durian" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Durian" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@
                         <img src="./products/kiwi.jpg" alt="Kiwi" class="product">
                         <h5>Kiwi<br><br>
                             $0.43</h5>
-                        <button id="Kiwi" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Kiwi" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -159,7 +159,7 @@
                         <img src="./products/dragonfruit.jpg" alt="Dragonfruit" class="product">
                         <h5>Dragonfruit<br><br>
                             $5.59</h5>
-                        <button id="Dragonfruit" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Dragonfruit" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@
                         <img src="./products/grapes.png" alt="Grapes" class="product">
                         <h5>Grapes<br><br>
                             $4.98</h5>
-                        <button id="Grapes" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
+                        <button id="Grapes" class="cart_button" onclick="addToCart()">Add to Cart<span></span></button>
                     </div>
                 </div>
             </div>
@@ -217,13 +217,76 @@
             let name = event.srcElement.id;
             console.log(name);
             let price = 0;
-            if (name == "RedApple"){
-                name = "Red Apple"
-            }
-
+            
             if (name == "Blueberries"){
                 cart.productName.push("Blueberries");
                 price = 3.99;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Pineapple"){
+                cart.productName.push("Pineapple");
+                price = 2.99;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Bananas"){
+                cart.productName.push("Bananas");
+                price = 0.69;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "RedApple"){
+                cart.productName.push("Red Apple");
+                price = 1;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Peach"){
+                cart.productName.push("Peach");
+                price = 0.75;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Raspberries"){
+                cart.productName.push("Raspberries");
+                price = 2.99;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Mangos"){
+                cart.productName.push("Mangos");
+                price = 1.99;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Oranges"){
+                cart.productName.push("Oranges");
+                price = 2.99;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Durian"){
+                cart.productName.push("Durian");
+                price = 7.99;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Kiwi"){
+                cart.productName.push("Kiwi");
+                price = 0.43;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Dragonfruit"){
+                cart.productName.push("Dragonfruit");
+                price = 5.59;
+                cart.productPrice.push(price);
+            }
+
+            if (name == "Grapes"){
+                cart.productName.push("Grapes");
+                price = 4.98;
                 cart.productPrice.push(price);
             }
 

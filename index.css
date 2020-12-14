@@ -102,7 +102,7 @@
   .cart_button span {
     cursor: pointer;
     display: inline-block;
-    position: relative;
+    position: absolute;
     transition: 0.5s;
   }
   
