@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/4c1fd271-fd59-4e8d-bb06-01dde9ad1745/resourceGroups/node-js-azure-hd-rg/providers/Microsoft.Web/sites/Fruity-Delight",
+    "appService.deploySubpath": "."
+}
