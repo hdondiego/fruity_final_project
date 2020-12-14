@@ -6,23 +6,17 @@
     </head>
     <body>
         <div class="topnav">
-            <!--<a class="active" href="#home">Home</a> -->
-            <!--<a href="#cart" onclick="opennav()">Cart</a>-->
-            <p onclick="openNav()">Cart</p>
+            <p onclick="openNav()" style="color: white; margin-left: 2%;">Cart</p>
         </div>
 
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <!--
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-            -->
             <header>
                 <h4>Items</h4>
             </header>
-            <div class="items_list"></div>
+            <div class="items_list">
+                <table id="items"></table>
+            </div>
             <footer>
                 <table>
                     <tr>
@@ -186,6 +180,8 @@
 
         var subtotal = 0;
 
+        var id = 0;
+
         var divList = $(".column");
 
         function sortAlphAZ(){
@@ -211,6 +207,28 @@
         /* Set the width of the side navigation to 0 */
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function removeItem(){
+            let idVal = event.srcElement.id; // ex. id0_2
+            let buttonElement = document.getElementById(idVal); // contains _2 -> button
+            let buttonIdVal = buttonElement.id;
+            main_temp = buttonIdVal.replace("_2", ""); // name id
+            mainElement = document.getElementById(main_temp);
+            
+            let priceElement = document.getElementById(main_temp+"_1"); // contains _1 -> price
+
+            var sub = document.getElementById("subtotal_price");
+            subtotal = subtotal - priceElement.textContent;
+            var temp = parseFloat(subtotal.toFixed(2));
+            subtotal = temp;
+            console.log("subtotal: " + subtotal);
+            
+            sub.innerHTML = "$"+subtotal;
+            
+            mainElement.remove();   // remove name of product
+            priceElement.remove();  // remove price of product
+            buttonElement.remove(); // remove the button to the added product
         }
 
         function addToCart(){
@@ -290,26 +308,45 @@
                 cart.productPrice.push(price);
             }
 
-            var div = document.getElementsByClassName("items_list");
-            //var div = document.getElementsByTagName('items_list');
-            //var div = $("items_list");
-            var p = document.createElement("p");
-            //var p = document.createTextNode(name + " " + price);
-            //p.innerHTML = name + " " + price;
-            p.textContent = name + " " + price;
-            p.style.color = "white";
-            div[0].append(p);
-            //var sub = document.getElementsByClassName("subtotal").getElementById("subtotal_price");
+            var idName = "id" + id;
+
+            var table = document.getElementById("items");
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+
+            var cellOne = row.insertCell(0);
+            var elementOne = document.createElement("p");
+            elementOne.textContent = name;
+            elementOne.style.color = "white";
+            elementOne.id = idName;
+            cellOne.appendChild(elementOne);
+
+            var cellTwo = row.insertCell(1);
+            var elementTwo = document.createElement("p");
+            elementTwo.textContent = price;
+            elementTwo.style.color = "white";
+            elementTwo.id = idName+"_1";
+            cellTwo.appendChild(elementTwo);
+
+            var cellThree = row.insertCell(2);
+            var elementThree = document.createElement("input");
+            elementThree.type = "button";
+            elementThree.value = "Remove";
+            elementThree.id = idName+"_2";
+            elementThree.onclick = removeItem;
+            cellThree.appendChild(elementThree);
+
             var sub = document.getElementById("subtotal_price");
             subtotal = subtotal + price
             var temp = parseFloat(subtotal.toFixed(2));
             subtotal = temp;
-            //subtotal = subtotal.toFixed(2);
             console.log("subtotal: " + subtotal);
             
             sub.innerHTML = "$"+subtotal;
-            //div.append(p);
-            //div.appendChild(p);
+
+            id++;
         }
+
+
     </script>
 </html>
