@@ -40,7 +40,7 @@
                         <img src="./products/blueberries.jpg" alt="Blueberries" class="product">
                         <h5>Blueberries<br><br>
                             $3.99</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Blueberries" class="cart_button" onclick="addToCart()"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                         <img src="./products/pineapple.jpg" alt="Pineapple" class="product">
                         <h5>Pineapple<br><br>
                             $2.99</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Pineapple" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -62,7 +62,7 @@
                         <img src="./products/bananas.jpg" alt="Bananas" class="product">
                         <h5>Bananas<br><br>
                             $0.69</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Bananas" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@
                         <img src="./products/red_apple.jpg" alt="Red Apple" class="product">
                         <h5>Red Apple<br><br>
                             $1.00</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="RedApple" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                         <img src="./products/peach.jpg" alt="Peach" class="product">
                         <h5>Peach<br><br>
                             $0.75</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Peach" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                         <img src="./products/raspberries.jpg" alt="Raspberries" class="product">
                         <h5>Raspberries<br><br>
                             $2.99</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Raspberries" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
                         <img src="./products/mangos.jpg" alt="Mangos" class="product">
                         <h5>Mangos<br><br>
                             $1.99</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Mangos" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
                 
@@ -117,7 +117,7 @@
                         <img src="./products/oranges.jpg" alt="Oranges" class="product">
                         <h5>Oranges<br><br>
                             $2.99</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Oranges" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -128,7 +128,7 @@
                         <img src="./products/durian.jpg" alt="Durian" class="product">
                         <h5>Durian<br><br>
                             $7.99</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Durian" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -139,7 +139,7 @@
                         <img src="./products/kiwi.jpg" alt="Kiwi" class="product">
                         <h5>Kiwi<br><br>
                             $0.43</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Kiwi" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -150,7 +150,7 @@
                         <img src="./products/dragonfruit.jpg" alt="Dragonfruit" class="product">
                         <h5>Dragonfruit<br><br>
                             $5.59</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Dragonfruit" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
 
@@ -161,7 +161,7 @@
                         <img src="./products/grapes.png" alt="Grapes" class="product">
                         <h5>Grapes<br><br>
                             $4.98</h5>
-                        <button class="cart_button"><span>Add to Cart</span></button>
+                        <button id="Grapes" class="cart_button"><span>Add to Cart</span></button>
                     </div>
                 </div>
             </div>
@@ -170,6 +170,11 @@
 
     <!--Code for sorting buttons-->
     <script>
+        var cart = {
+            productName : [],
+            productPrice : []
+        }
+
         var divList = $(".column");
 
         function sortAlphAZ(){
@@ -195,6 +200,33 @@
         /* Set the width of the side navigation to 0 */
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function addToCart(){
+            let name = event.srcElement.id;
+            console.log(name);
+            let price = 0;
+            if (name == "RedApple"){
+                name = "Red Apple"
+            }
+
+            if (name == "Blueberries"){
+                cart.productName.push("Blueberries");
+                price = 3.99;
+                cart.productPrice.push(price);
+            }
+
+            var div = document.getElementsByClassName("items_list");
+            //var div = document.getElementsByTagName('items_list');
+            //var div = $("items_list");
+            var p = document.createElement("p");
+            //var p = document.createTextNode(name + " " + price);
+            //p.innerHTML = name + " " + price;
+            p.textContent = name + " " + price;
+            p.style.color = "white";
+            div[0].append(p); 
+            //div.append(p);
+            //div.appendChild(p);
         }
     </script>
 </html>
