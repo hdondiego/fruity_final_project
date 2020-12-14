@@ -239,6 +239,9 @@
             //var sub = document.getElementsByClassName("subtotal").getElementById("subtotal_price");
             var sub = document.getElementById("subtotal_price");
             subtotal = subtotal + price
+            var temp = subtotal.toFixed(2);
+            subtotal = temp;
+            //subtotal = subtotal.toFixed(2);
             console.log("subtotal: " + subtotal);
             
             sub.innerHTML = "$"+subtotal;
